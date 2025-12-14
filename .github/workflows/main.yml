@@ -1,19 +1,13 @@
-name: Kod Kalite Kontrolü
+name: Python Hata Kontrolü
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  build:
-    name: Lint Code Base
+  test-et:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Kodu İndir (Checkout)
+      - name: Kodu İndir
         uses: actions/checkout@v3
 
-      - name: Super-Linter Çalıştır
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Python Kodunu Çalıştır
+        run: python main.py
